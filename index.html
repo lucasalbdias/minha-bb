@@ -6,11 +6,12 @@
     <title>Para o Amor da Minha Vida 💖</title>
     <style>
         body {
-            background-image: url('![Image](https://github.com/user-attachments/assets/8d5e06f1-75fd-4f7e-ab86-a0d2d7bd02b4)'); /* Caminho atualizado */
+            background-image: url('![Image](https://github.com/user-attachments/assets/8d5e06f1-75fd-4f7e-ab86-a0d2d7bd02b4)');
             background-size: cover;
             text-align: center;
             font-family: 'Comic Sans MS', cursive;
             color: red;
+            overflow: hidden;
         }
         #message {
             font-size: 20px;
@@ -23,11 +24,11 @@
             position: absolute;
             font-size: 24px;
             color: red;
-            animation: float 4s linear infinite;
+            animation: float 5s linear infinite;
         }
         @keyframes float {
             from { transform: translateY(0); opacity: 1; }
-            to { transform: translateY(-200px); opacity: 0; }
+            to { transform: translateY(-300px); opacity: 0; }
         }
     </style>
 </head>
@@ -35,7 +36,7 @@
     <h1>Para o Amor da Minha Vida 💖</h1>
     <p id="message"></p>
     <br>
-    <button onclick="askValentine()" style="font-size: 18px; background: red; color: white; padding: 10px; border: none; cursor: pointer;">Clique para abrir meu coração 💘</button>
+    <button onclick="askValentine()" style="font-size: 18px; background: red; color: white; padding: 10px; border: none; cursor: pointer; border-radius: 10px;">Clique para abrir meu coração 💘</button>
 
     <script>
         const message = "Desde que você apareceu na minha vida, tudo ficou mais bonito. Você ilumina meus dias, faz meu coração bater mais forte e me dá motivos para sorrir todos os dias. Eu só quero te fazer feliz e estar ao seu lado para sempre. Você aceita ser meu Valentine's? 💖💍";
@@ -45,22 +46,25 @@
                 document.getElementById("message").innerText = message.slice(0, index + 1);
                 index++;
                 setTimeout(typeText, 50);
+                createHeart();
             }
         }
         function askValentine() {
             alert("Você aceita ser meu Valentine's para sempre? 💖😍");
-            createHearts();
-        }
-        function createHearts() {
-            for (let i = 0; i < 10; i++) {
-                let heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.innerHTML = "💖";
-                heart.style.left = Math.random() * window.innerWidth + "px";
-                heart.style.top = Math.random() * window.innerHeight + "px";
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 4000);
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createHeart, i * 200);
             }
+        }
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = window.innerHeight + "px";
+            heart.style.position = "absolute";
+            heart.style.fontSize = Math.random() * 30 + 10 + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
         }
         window.onload = typeText;
     </script>
