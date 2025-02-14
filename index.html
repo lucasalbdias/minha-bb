@@ -73,9 +73,7 @@
     
     <div id="content" style="display: none;">
         <button onclick="startMusic()">Clique para abrir meu coração 💘</button>
-        <div id="music-container">
-            <iframe id="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/BDaHXHsVJZI?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
+        <audio id="background-music" src="https://www.youtube.com/watch?v=BDaHXHsVJZI&ab_channel=MattMaltese" type="audio/mpeg"></audio>
     </div>
     
     <script>
@@ -95,9 +93,8 @@
             typeText();
         }
         function startMusic() {
-            document.getElementById("music-container").style.display = "block";
-            const iframe = document.getElementById("youtube-video");
-            iframe.src += "&autoplay=1";
+            const audio = document.getElementById("background-music");
+            audio.play();
         }
         function createHeart() {
             let heart = document.createElement("div");
