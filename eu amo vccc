@@ -6,7 +6,7 @@
     <title>Para o Amor da Minha Vida 💖</title>
     <style>
         body {
-            background-image: url('love_background.png'); /* Substitua pela sua imagem */
+            background-image: url('love_background.png');
             background-size: cover;
             text-align: center;
             font-family: 'Comic Sans MS', cursive;
@@ -14,57 +14,57 @@
         }
         #message {
             font-size: 20px;
-            width: 80%;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 15px;
+            background-color: white;
+            padding: 20px;
             border-radius: 10px;
+            display: inline-block;
         }
         .heart {
             position: absolute;
             font-size: 24px;
             color: red;
+            animation: float 4s linear infinite;
         }
-        button {
-            background: red;
-            color: white;
-            font-size: 18px;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
+        @keyframes float {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-200px); opacity: 0; }
         }
     </style>
 </head>
 <body>
     <h1>Para o Amor da Minha Vida 💖</h1>
-    <div id="message"></div>
-    <button onclick="showHearts()">Clique para abrir meu coração 💘</button>
+    <p id="message"></p>
+    <br>
+    <button onclick="askValentine()" style="font-size: 18px; background: red; color: white; padding: 10px; border: none; cursor: pointer;">Clique para abrir meu coração 💘</button>
+    <audio id="music" src="love_song.mp3" loop></audio>
 
     <script>
-        const loveMessage = "Desde que você apareceu na minha vida, tudo ficou mais bonito. Você ilumina meus dias, faz meu coração bater mais forte e me dá motivos para sorrir todos os dias. Eu só quero te fazer feliz e estar ao seu lado para sempre. Você aceita ser meu Valentine's? 💖💍";
-        let i = 0;
-
+        const message = "Desde que você apareceu na minha vida, tudo ficou mais bonito. Você ilumina meus dias, faz meu coração bater mais forte e me dá motivos para sorrir todos os dias. Eu só quero te fazer feliz e estar ao seu lado para sempre. Você aceita ser meu Valentine's? 💖💍";
+        let index = 0;
         function typeText() {
-            if (i < loveMessage.length) {
-                document.getElementById("message").innerHTML += loveMessage.charAt(i);
-                i++;
+            if (index < message.length) {
+                document.getElementById("message").innerText = message.slice(0, index + 1);
+                index++;
                 setTimeout(typeText, 50);
             }
         }
-        typeText();
-
-        function showHearts() {
-            for (let j = 0; j < 10; j++) {
+        function askValentine() {
+            alert("Você aceita ser meu Valentine's para sempre? 💖😍");
+            document.getElementById("music").play();
+            createHearts();
+        }
+        function createHearts() {
+            for (let i = 0; i < 10; i++) {
                 let heart = document.createElement("div");
                 heart.classList.add("heart");
-                heart.innerHTML = "❤️";
+                heart.innerHTML = "💖";
                 heart.style.left = Math.random() * window.innerWidth + "px";
                 heart.style.top = Math.random() * window.innerHeight + "px";
                 document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 3000);
+                setTimeout(() => heart.remove(), 4000);
             }
         }
+        window.onload = typeText;
     </script>
 </body>
 </html>
