@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Amor da Minha Vida 💖</title>
+    <style>
+        body {
+            background-image: url('./love_background.png'); /* Caminho correto para GitHub Pages */
+            background-size: cover;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive;
+            color: red;
+        }
+        #message {
+            font-size: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            animation: float 4s linear infinite;
+        }
+        @keyframes float {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-200px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Para o Amor da Minha Vida 💖</h1>
+    <p id="message"></p>
+    <br>
+    <button onclick="askValentine()" style="font-size: 18px; background: red; color: white; padding: 10px; border: none; cursor: pointer;">Clique para abrir meu coração 💘</button>
+
+    <script>
+        const message = "Desde que você apareceu na minha vida, tudo ficou mais bonito. Você ilumina meus dias, faz meu coração bater mais forte e me dá motivos para sorrir todos os dias. Eu só quero te fazer feliz e estar ao seu lado para sempre. Você aceita ser meu Valentine's? 💖💍";
+        let index = 0;
+        function typeText() {
+            if (index < message.length) {
+                document.getElementById("message").innerText = message.slice(0, index + 1);
+                index++;
+                setTimeout(typeText, 50);
+            }
+        }
+        function askValentine() {
+            alert("Você aceita ser meu Valentine's para sempre? 💖😍");
+            createHearts();
+        }
+        function createHearts() {
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "💖";
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = Math.random() * window.innerHeight + "px";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }
+        }
+        window.onload = typeText;
+    </script>
+</body>
+</html>
